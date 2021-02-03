@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<VBox stylesheets="@style.css" xmlns:fx="http://javafx.com/fxml"  fx:controller="controller.StudentController" alignment="center"  styleClass = "root" >
+    
+    <!-- Header -->
+    <HBox  styleClass = "header">   
+       
+        <Text styleClass="heading" text="${'Logged in as ' + controller.student.name}" />
+        <Pane HBox.hgrow="ALWAYS" />
+        <GridPane styleClass = "gridPaneBackground" alignment = "top_right" hgap ="10" vgap ="10"  >
+            
+            
+            <Label text = "Student number: " GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Text  text="${controller.student.number}" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            
+            <Label text = "Attendance: " GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Text text="${controller.student.attendance}" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            
+            <Label text = "Scholarship: " GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Text  fx:id="scholarshipText" text=""  GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            
+        </GridPane>
+    </HBox>
+      
+      
+    <!-- Content -->
+
+    <VBox alignment ="center"  styleClass="tableContent">
+        <!-- Table 1 -->
+        <HBox alignment = "center_left">
+            <Text styleClass="heading" text="My Activities"  />
+            
+            
+            <Pane HBox.hgrow="ALWAYS" />
+            <Button disable = "true"  fx:id = "withdrawBtn" text="Withdraw" alignment ="center_right" />
+        </HBox>
+    
+        <TableView  styleClass ="tableGridPane" fx:id="enrolledTv" prefHeight="200">
+            
+            <placeholder> <Label text="Not enrolled in any activities"/> </placeholder>
+            
+            <columns>
+                <TableColumn fx:id="enrolledTvSubjectCol" text="Subject"> </TableColumn>
+                <TableColumn fx:id="enrolledTvGroupCol" text="Group"> </TableColumn>
+                <TableColumn fx:id="enrolledTvActivityCol" text="Activity"> </TableColumn>
+                <TableColumn fx:id="enrolledTvDayCol" text="Day"> </TableColumn>
+                <TableColumn fx:id="enrolledTvStartCol" text="Start"> </TableColumn>
+                <TableColumn fx:id="enrolledTvDurationCol" text="Duration"> </TableColumn>
+                <TableColumn fx:id="enrolledTvRoomCol" text="Room"> </TableColumn>
+                <TableColumn fx:id="enrolledTvcapacityCol" text="Capacity"> </TableColumn>
+                <TableColumn fx:id="enrolledTvEnrolledCol" text="Enrolled"> </TableColumn>
+            </columns>
+        </TableView>
+     
+     
+     
+        <!-- Table 2 -->
+
+    
+    
+        <HBox>
+
+            <HBox alignment ="top_left">
+                <Text styleClass="heading" text="Enrol into Subject"  />
+                <ComboBox fx:id="subjectCb" promptText="choose" items = "${controller.student.university.subjects}" />
+            </HBox>
+            
+            
+            <Pane HBox.hgrow="ALWAYS" />
+
+            <Button fx:id = "enrolBtn" disable = "true" text="Enrol"  />
+        </HBox>
+        <VBox>
+            <TableView  styleClass ="tableGridPane" fx:id="enrolTv" prefHeight="200">
+            
+                <columns>
+                    <TableColumn fx:id="enrolTvSubjectCol" text="Subject"> </TableColumn>
+                    <TableColumn fx:id="enrolTvGroupCol" text="Group"> </TableColumn>
+                    <TableColumn fx:id="enrolTvActivityCol" text="Activity"> </TableColumn>
+                    <TableColumn fx:id="enrolTvDayCol" text="Day"> </TableColumn>
+                    <TableColumn fx:id="enrolTvStartCol" text="Start"> </TableColumn>
+                    <TableColumn fx:id="enrolTvDurationCol" text="Duration"> </TableColumn>
+                    <TableColumn fx:id="enrolTvRoomCol" text="Room"> </TableColumn>
+                    <TableColumn fx:id="enrolTvCapacityCol" text="Capacity"> </TableColumn>
+                    <TableColumn fx:id="enrolTvEnrolledCol" text="Enrolled"> </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    
+        <!-- Footer -->
+    
+        <HBox   styleClass = "footer" alignment="center" prefHeight="50">
+            <Button fx:id = "logoutBtn" text="Logout" onAction="#handleLogout"/>
+        </HBox>
+        
+        
+        
+    </VBox>
+</VBox>
